@@ -3,6 +3,8 @@ import 'package:flutter/rendering.dart';
 import 'package:maria_john/HomePageViewer.dart';
 import 'package:maria_john/CustomnScrollBarBehaviour.dart';
 
+import 'ProductPage.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -77,19 +79,24 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget createSingle() {
+    Route route = MaterialPageRoute(builder: (context) => ProductRoute());
     return Container(
-        height: dim.width,
-        width: dim.width * .4,
-        child: Card(
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          child: Stack(
-            children: <Widget>[
-              Image(
-                image: AssetImage('images/img3.jpeg'),
+      height: dim.width,
+      width: dim.width * .4,
+      child: Card(
+        child: GestureDetector(
+          onTap: () => (Navigator.push(context, route)),
+          child: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("images/img4.jpeg"),
+                fit: BoxFit.cover,
+                alignment: Alignment.topCenter,
               ),
-              Text("hey")
-            ],
+            ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
